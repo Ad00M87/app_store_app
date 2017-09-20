@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { updateApp, deleteApp } from '../actions/apps';
 import { Container, Grid, Header, Card, Image, Dropdown, Divider, Button } from 'semantic-ui-react';
 
 class Apps extends Component {
@@ -25,7 +26,7 @@ class Apps extends Component {
 
     return visable.map( app => {
       return(
-        <Grid.Column key={app.id} computer={4} mobile={16} tablet={16}>
+        <Grid.Column key={app.id} computer={4} mobile={16} tablet={8}>
           <Card style={styles.appCard}>
             <Image src={app.logo} />
             <Card.Content>
@@ -43,7 +44,7 @@ class Apps extends Component {
             </Card.Content>
           </Card>
           <Button style={styles.buttons} color="orange">Edit App</Button>
-          <Button style={styles.buttons} color="red">Delete App</Button>
+          <Button style={styles.buttons} color="red" onClick={deleteApp(app.id)}>Delete App</Button>
         </Grid.Column>
       )
     })

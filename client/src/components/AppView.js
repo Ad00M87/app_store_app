@@ -43,6 +43,7 @@ const AppView = ({ app = {} }) => (
 )
 
 const mapStateToProps = (state, props) => {
+  // eslint-disable-next-line
   return { app: state.apps.find( a => a.id === parseInt(props.match.params.id )) }
 }
 
