@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Header, Card, Image, Dropdown, Button } from 'semantic-ui-react';
+import { Container, Grid, Header, Card, Image, Dropdown, Divider, Button } from 'semantic-ui-react';
 
 class Apps extends Component {
   state = { category: '' }
@@ -42,6 +42,8 @@ class Apps extends Component {
               <Link to={`/apps/${app.id}`}>View App</Link>
             </Card.Content>
           </Card>
+          <Button style={styles.buttons} color="orange">Edit App</Button>
+          <Button style={styles.buttons} color="red">Delete App</Button>
         </Grid.Column>
       )
     })
@@ -60,7 +62,8 @@ class Apps extends Component {
           value={category}
           onChange={ (e, data) => this.setState({ category: data.value })}
         />
-        { category && <Button fluid basic onClick={this.clearFilter} >Clear Filter</Button> }
+        <Divider />
+        { category && <div><Button fluid basic onClick={this.clearFilter} >Clear Filter</Button> <Divider /></div>}
         <Grid columns={16}>
           <Grid.Row>
             { this.apps() }
@@ -79,6 +82,9 @@ const styles = {
   },
   appCard: {
     height: '400px',
+    marginBottom: '10px'
+  },
+  buttons: {
     marginBottom: '10px'
   },
 }
